@@ -19,3 +19,4 @@
 10. .terraformrc - игнорирует папки .terraformrc
 11. terraform.rc - игнорирует файлы с именем и расширением terraform.rc
 
+
