@@ -1,6 +1,6 @@
 # Ветвления в GIT
 
-### история изсенений
+### история изменений
 
 commit 9b6b7c554fb9fafecb516c71a430ffec741a29e5 (HEAD -> main, origin/main, origin/git-rebase, origin/HEAD, git-rebase)
 Author: Aleksandp <panarin0290@gmail.com>
