@@ -18,3 +18,6 @@
 9. *_override.tf.json - игнорирует файлы с окончанием _override.tf.json
 10. .terraformrc - игнорирует папки .terraformrc
 11. terraform.rc - игнорирует файлы с именем и расширением terraform.rc
+
+
+
