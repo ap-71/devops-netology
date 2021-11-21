@@ -18,7 +18,10 @@ ls 2> /dev/pts/2  - pts/2 = номер другой сессии термина�
 ```
 5
 ```
-cat file1.txt | grep "hello" > file2.txt
+echo 'test_hello_test' > file1.txt
+работающий пример по заданию> grep "hello" < file1.txt > file2.txt
+cat file2.txt
+out> test_hello_test
 ```
 6 Вывести получится:
 ```
