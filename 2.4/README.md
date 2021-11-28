@@ -1,6 +1,6 @@
 # ДЗ 2.4
 
-1. Найдите полный хеш и комментарий коммита, хеш которого начинается на aefea.
+## 1. Найдите полный хеш и комментарий коммита, хеш которого начинается на aefea.
 - Команда: 
 ``` 
 git show aefea
@@ -11,7 +11,7 @@ git show aefea
 
 комментарий - Update CHANGELOG.md
 ```
-2. Какому тегу соответствует коммит 85024d3?
+## 2. Какому тегу соответствует коммит 85024d3?
 - Команда: 
 ```
 git show 85024
@@ -20,7 +20,7 @@ git show 85024
 ```
 commit 85024d3100126de36331c6982bfaac02cdab9e76 (tag: v0.12.23)
 ```
-3. Сколько родителей у коммита b8d720? Напишите их хеши.
+## 3. Сколько родителей у коммита b8d720? Напишите их хеши.
 - Команда: 
 ```
 git show --pretty=format:'%P' b8d720
@@ -31,7 +31,7 @@ git show --pretty=format:'%P' b8d720
 
 9ea88f22fc6269854151c571162c5bcf958bee2b
 ```
-4. Перечислите хеши и комментарии всех коммитов которые были сделаны между тегами v0.12.23 и v0.12.24.
+## 4. Перечислите хеши и комментарии всех коммитов которые были сделаны между тегами v0.12.23 и v0.12.24.
 - Команда: 
 ```
 git log  v0.12.23..v0.12.24  --oneline
@@ -49,7 +49,7 @@ d5f9411f5 command: Fix bug when using terraform login on Windows
 dd01a3507 Update CHANGELOG.md
 225466bc3 Cleanup after v0.12.23 release
 ```
-5. Найдите коммит в котором была создана функция func providerSource, ее определение в коде выглядит так func providerSource(...) (вместо троеточего перечислены аргументы).
+## 5. Найдите коммит в котором была создана функция func providerSource, ее определение в коде выглядит так func providerSource(...) (вместо троеточего перечислены аргументы).
 - Команда: 
 ```
  git log -S'func providerSource(' --oneline
@@ -58,7 +58,7 @@ dd01a3507 Update CHANGELOG.md
 ```
 8c928e835 main: Consult local directories as potential mirrors of providers
 ```
-6. Найдите все коммиты в которых была изменена функция globalPluginDirs.
+## 6. Найдите все коммиты в которых была изменена функция globalPluginDirs.
 - Команда: 
 ```
 git grep 'func globalPluginDirs'
@@ -98,7 +98,7 @@ diff --git a/plugins.go b/plugins.go
 diff --git a/plugins.go b/plugins.go
 ...
 ```
-7. Кто автор функции synchronizedWriters?
+## 7. Кто автор функции synchronizedWriters?
 - Команда: 
 ```
  git log -S'func synchronizedWriters' --pretty=format:'%h - %an %ae'
