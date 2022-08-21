@@ -1,0 +1,36 @@
+---
+  - name: Play
+    hosts: localhost
+    tasks:
+    - name: One task
+      ansible.builtin.debug:
+        msg: One
+      tags:
+        - one
+        - never
+    - name: Two task
+      ansible.builtin.debug:
+        msg: Two
+      tags:
+        - two
+        - common
+        - always
+    - name: Three task
+      ansible.builtin.debug:
+        msg: Three
+      tags:
+        - three
+        - common
+    - name: Four task
+      ansible.builtin.debug:
+        msg: four
+      
+
+
+
+
+
+
+
+  
+  

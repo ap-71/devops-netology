@@ -1,0 +1,984 @@
+ansible-playbook [core 2.13.2]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/home/vagrant/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.8/dist-packages/ansible
+  ansible collection location = /home/vagrant/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.8.10 (default, Nov 26 2021, 20:14:08) [GCC 9.3.0]
+  jinja version = 3.1.2
+  libyaml = True
+Using /etc/ansible/ansible.cfg as config file
+setting up inventory plugins
+host_list declined parsing /vagrant/playbook/inventory/prod.yml as it did not pass its verify_file() method
+Parsed /vagrant/playbook/inventory/prod.yml inventory source with yaml plugin
+Loading callback plugin default of type stdout, v2.0 from /usr/local/lib/python3.8/dist-packages/ansible/plugins/callback/default.py
+Attempting to use 'default' callback.
+Skipping callback 'default', as we already have a stdout callback.
+Attempting to use 'junit' callback.
+Attempting to use 'minimal' callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Attempting to use 'oneline' callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+Attempting to use 'tree' callback.
+
+PLAYBOOK: site.yml *************************************************************
+Positional arguments: site.yml
+verbosity: 5
+connection: smart
+timeout: 10
+become_method: sudo
+tags: ('all',)
+inventory: ('/vagrant/playbook/inventory/prod.yml',)
+forks: 5
+1 plays in site.yml
+
+PLAY [Install Clickhouse] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+task path: /vagrant/playbook/site.yml:2
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+<192.168.1.22> (0, b'/home/vagrant\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp `"&& mkdir "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075 `" && echo ansible-tmp-1658925543.4967992-23764-204800383008075="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075 `" ) && sleep 0'"'"''
+<192.168.1.22> (0, b'ansible-tmp-1658925543.4967992-23764-204800383008075=/home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Including module_utils file ansible/__init__.py
+Including module_utils file ansible/module_utils/__init__.py
+Including module_utils file ansible/module_utils/_text.py
+Including module_utils file ansible/module_utils/basic.py
+Including module_utils file ansible/module_utils/common/_collections_compat.py
+Including module_utils file ansible/module_utils/common/__init__.py
+Including module_utils file ansible/module_utils/common/_json_compat.py
+Including module_utils file ansible/module_utils/common/_utils.py
+Including module_utils file ansible/module_utils/common/arg_spec.py
+Including module_utils file ansible/module_utils/common/file.py
+Including module_utils file ansible/module_utils/common/locale.py
+Including module_utils file ansible/module_utils/common/parameters.py
+Including module_utils file ansible/module_utils/common/collections.py
+Including module_utils file ansible/module_utils/common/process.py
+Including module_utils file ansible/module_utils/common/sys_info.py
+Including module_utils file ansible/module_utils/common/text/converters.py
+Including module_utils file ansible/module_utils/common/text/__init__.py
+Including module_utils file ansible/module_utils/common/text/formatters.py
+Including module_utils file ansible/module_utils/common/validation.py
+Including module_utils file ansible/module_utils/common/warnings.py
+Including module_utils file ansible/module_utils/compat/selectors.py
+Including module_utils file ansible/module_utils/compat/__init__.py
+Including module_utils file ansible/module_utils/compat/_selectors2.py
+Including module_utils file ansible/module_utils/compat/selinux.py
+Including module_utils file ansible/module_utils/distro/__init__.py
+Including module_utils file ansible/module_utils/distro/_distro.py
+Including module_utils file ansible/module_utils/errors.py
+Including module_utils file ansible/module_utils/facts/ansible_collector.py
+Including module_utils file ansible/module_utils/compat/typing.py
+Including module_utils file ansible/module_utils/facts/__init__.py
+Including module_utils file ansible/module_utils/facts/collector.py
+Including module_utils file ansible/module_utils/facts/compat.py
+Including module_utils file ansible/module_utils/facts/default_collectors.py
+Including module_utils file ansible/module_utils/facts/hardware/aix.py
+Including module_utils file ansible/module_utils/facts/hardware/__init__.py
+Including module_utils file ansible/module_utils/facts/hardware/base.py
+Including module_utils file ansible/module_utils/facts/hardware/darwin.py
+Including module_utils file ansible/module_utils/facts/hardware/dragonfly.py
+Including module_utils file ansible/module_utils/facts/hardware/freebsd.py
+Including module_utils file ansible/module_utils/facts/hardware/hpux.py
+Including module_utils file ansible/module_utils/facts/hardware/hurd.py
+Including module_utils file ansible/module_utils/facts/hardware/linux.py
+Including module_utils file ansible/module_utils/facts/hardware/netbsd.py
+Including module_utils file ansible/module_utils/facts/hardware/openbsd.py
+Including module_utils file ansible/module_utils/facts/hardware/sunos.py
+Including module_utils file ansible/module_utils/facts/namespace.py
+Including module_utils file ansible/module_utils/facts/network/aix.py
+Including module_utils file ansible/module_utils/facts/network/__init__.py
+Including module_utils file ansible/module_utils/facts/network/base.py
+Including module_utils file ansible/module_utils/facts/network/darwin.py
+Including module_utils file ansible/module_utils/facts/network/dragonfly.py
+Including module_utils file ansible/module_utils/facts/network/fc_wwn.py
+Including module_utils file ansible/module_utils/facts/network/freebsd.py
+Including module_utils file ansible/module_utils/facts/network/generic_bsd.py
+Including module_utils file ansible/module_utils/facts/network/hpux.py
+Including module_utils file ansible/module_utils/facts/network/hurd.py
+Including module_utils file ansible/module_utils/facts/network/iscsi.py
+Including module_utils file ansible/module_utils/facts/network/linux.py
+Including module_utils file ansible/module_utils/facts/network/netbsd.py
+Including module_utils file ansible/module_utils/facts/network/nvme.py
+Including module_utils file ansible/module_utils/facts/network/openbsd.py
+Including module_utils file ansible/module_utils/facts/network/sunos.py
+Including module_utils file ansible/module_utils/facts/other/facter.py
+Including module_utils file ansible/module_utils/facts/other/__init__.py
+Including module_utils file ansible/module_utils/facts/other/ohai.py
+Including module_utils file ansible/module_utils/facts/sysctl.py
+Including module_utils file ansible/module_utils/facts/system/apparmor.py
+Including module_utils file ansible/module_utils/facts/system/__init__.py
+Including module_utils file ansible/module_utils/facts/system/caps.py
+Including module_utils file ansible/module_utils/facts/system/chroot.py
+Including module_utils file ansible/module_utils/facts/system/cmdline.py
+Including module_utils file ansible/module_utils/facts/system/date_time.py
+Including module_utils file ansible/module_utils/facts/system/distribution.py
+Including module_utils file ansible/module_utils/facts/system/dns.py
+Including module_utils file ansible/module_utils/facts/system/env.py
+Including module_utils file ansible/module_utils/facts/system/fips.py
+Including module_utils file ansible/module_utils/facts/system/local.py
+Including module_utils file ansible/module_utils/facts/system/lsb.py
+Including module_utils file ansible/module_utils/facts/system/pkg_mgr.py
+Including module_utils file ansible/module_utils/facts/system/platform.py
+Including module_utils file ansible/module_utils/facts/system/python.py
+Including module_utils file ansible/module_utils/facts/system/selinux.py
+Including module_utils file ansible/module_utils/facts/system/service_mgr.py
+Including module_utils file ansible/module_utils/compat/version.py
+Including module_utils file ansible/module_utils/facts/system/ssh_pub_keys.py
+Including module_utils file ansible/module_utils/facts/system/user.py
+Including module_utils file ansible/module_utils/facts/timeout.py
+Including module_utils file ansible/module_utils/facts/utils.py
+Including module_utils file ansible/module_utils/facts/virtual/base.py
+Including module_utils file ansible/module_utils/facts/virtual/__init__.py
+Including module_utils file ansible/module_utils/facts/virtual/dragonfly.py
+Including module_utils file ansible/module_utils/facts/virtual/freebsd.py
+Including module_utils file ansible/module_utils/facts/virtual/hpux.py
+Including module_utils file ansible/module_utils/facts/virtual/linux.py
+Including module_utils file ansible/module_utils/facts/virtual/netbsd.py
+Including module_utils file ansible/module_utils/facts/virtual/openbsd.py
+Including module_utils file ansible/module_utils/facts/virtual/sunos.py
+Including module_utils file ansible/module_utils/facts/virtual/sysctl.py
+Including module_utils file ansible/module_utils/parsing/convert_bool.py
+Including module_utils file ansible/module_utils/parsing/__init__.py
+Including module_utils file ansible/module_utils/pycompat24.py
+Including module_utils file ansible/module_utils/six/__init__.py
+<clickhouse-01> Attempting python interpreter discovery
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo PLATFORM; uname; echo FOUND; command -v '"'"'"'"'"'"'"'"'python3.10'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.9'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.8'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.6'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python3.5'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/bin/python3'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/libexec/platform-python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python2.7'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'/usr/bin/python'"'"'"'"'"'"'"'"'; command -v '"'"'"'"'"'"'"'"'python'"'"'"'"'"'"'"'"'; echo ENDFOUND && sleep 0'"'"''
+<192.168.1.22> (0, b'PLATFORM\nLinux\nFOUND\n/usr/libexec/platform-python\n/usr/bin/python2.7\n/usr/bin/python\n/usr/bin/python\nENDFOUND\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'/usr/libexec/platform-python && sleep 0'"'"''
+<192.168.1.22> (0, b'{"osrelease_content": "NAME=\\"CentOS Linux\\"\\nVERSION=\\"7 (Core)\\"\\nID=\\"centos\\"\\nID_LIKE=\\"rhel fedora\\"\\nVERSION_ID=\\"7\\"\\nPRETTY_NAME=\\"CentOS Linux 7 (Core)\\"\\nANSI_COLOR=\\"0;31\\"\\nCPE_NAME=\\"cpe:/o:centos:centos:7\\"\\nHOME_URL=\\"https://www.centos.org/\\"\\nBUG_REPORT_URL=\\"https://bugs.centos.org/\\"\\n\\nCENTOS_MANTISBT_PROJECT=\\"CentOS-7\\"\\nCENTOS_MANTISBT_PROJECT_VERSION=\\"7\\"\\nREDHAT_SUPPORT_PRODUCT=\\"centos\\"\\nREDHAT_SUPPORT_PRODUCT_VERSION=\\"7\\"\\n\\n", "platform_dist_result": ["centos", "7.8.2003", "Core"]}\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/local/lib/python3.8/dist-packages/ansible/modules/setup.py
+<192.168.1.22> PUT /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp2njzvpuo TO /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075/AnsiballZ_setup.py
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set sftp_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC sftp -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' '[192.168.1.22]'
+<192.168.1.22> (0, b'sftp> put /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp2njzvpuo /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075/AnsiballZ_setup.py\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 3 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/vagrant size 0\r\ndebug3: Looking up /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp2njzvpuo\r\ndebug3: Sent message fd 3 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075/AnsiballZ_setup.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:10 O:196608 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:11 O:229376 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:12 O:262144 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:13 O:294912 S:361\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 32768 bytes at 163840\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 10 32768 bytes at 196608\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 11 32768 bytes at 229376\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 12 32768 bytes at 262144\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 13 361 bytes at 294912\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075/ /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075/AnsiballZ_setup.py && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' -tt 192.168.1.22 '/bin/sh -c '"'"'/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075/AnsiballZ_setup.py && sleep 0'"'"''
+<192.168.1.22> (0, b'\r\n{"invocation": {"module_args": {"filter": [], "gather_subset": ["all"], "fact_path": "/etc/ansible/facts.d", "gather_timeout": 10}}, "ansible_facts": {"ansible_fibre_channel_wwn": [], "module_setup": true, "ansible_distribution_version": "7.8", "ansible_board_name": "VirtualBox", "ansible_distribution_file_variety": "RedHat", "ansible_env": {"LANG": "en_US.UTF-8", "TERM": "xterm-256color", "SHELL": "/bin/bash", "XDG_RUNTIME_DIR": "/run/user/1000", "SELINUX_ROLE_REQUESTED": "", "SHLVL": "2", "SSH_TTY": "/dev/pts/2", "HOME": "/home/vagrant", "SELINUX_LEVEL_REQUESTED": "", "SSH_CLIENT": "192.168.1.16 41808 22", "LESSOPEN": "||/usr/bin/lesspipe.sh %s", "PWD": "/home/vagrant", "SELINUX_USE_CURRENT_RANGE": "", "LOGNAME": "vagrant", "USER": "vagrant", "MAIL": "/var/mail/vagrant", "PATH": "/usr/local/bin:/usr/bin", "LS_COLORS": "rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=05;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:", "XDG_SESSION_ID": "13", "_": "/usr/bin/python", "SSH_CONNECTION": "192.168.1.16 41808 192.168.1.22 22"}, "ansible_userspace_bits": "64", "ansible_architecture": "x86_64", "ansible_default_ipv4": {"macaddress": "52:54:00:4d:77:d3", "network": "10.0.2.0", "netmask": "255.255.255.0", "mtu": 1500, "broadcast": "10.0.2.255", "alias": "eth0", "prefix": "24", "address": "10.0.2.15", "interface": "eth0", "type": "ether", "gateway": "10.0.2.2"}, "ansible_swapfree_mb": 2046, "ansible_default_ipv6": {}, "ansible_cmdline": {"no_timer_check": true, "LANG": "en_US.UTF-8", "BOOT_IMAGE": "/boot/vmlinuz-3.10.0-1127.el7.x86_64", "elevator": "noop", "net.ifnames": "0", "biosdevname": "0", "crashkernel": "auto", "console": "ttyS0,115200n8", "ro": true, "root": "UUID=1c419d6c-5064-4a2b-953c-05b2c67edb15"}, "ansible_ssh_host_key_ed25519_public_keytype": "ssh-ed25519", "ansible_machine_id": "ec8f68409baf134ea69bbde390483b27", "ansible_userspace_architecture": "x86_64", "ansible_product_uuid": "NA", "ansible_pkg_mgr": "yum", "ansible_distribution": "CentOS", "ansible_iscsi_iqn": "", "ansible_all_ipv6_addresses": ["fe80::a00:27ff:fe01:f1d3", "fe80::5054:ff:fe4d:77d3"], "ansible_uptime_seconds": 7457, "ansible_kernel": "3.10.0-1127.el7.x86_64", "ansible_system_capabilities_enforced": "True", "ansible_python": {"executable": "/usr/bin/python", "version": {"micro": 5, "major": 2, "releaselevel": "final", "serial": 0, "minor": 7}, "type": "CPython", "has_sslcontext": true, "version_info": [2, 7, 5, "final", 0]}, "ansible_is_chroot": true, "gather_subset": ["all"], "ansible_board_asset_tag": "NA", "ansible_user_shell": "/bin/bash", "ansible_product_serial": "NA", "ansible_form_factor": "Other", "ansible_distribution_file_parsed": true, "ansible_fips": false, "ansible_user_id": "vagrant", "ansible_selinux_python_present": true, "ansible_board_serial": "NA", "ansible_kernel_version": "#1 SMP Tue Mar 31 23:36:51 UTC 2020", "ansible_local": {}, "ansible_processor_vcpus": 2, "ansible_processor": ["0", "GenuineIntel", "Intel(R) Core(TM) i5-2400 CPU @ 3.10GHz", "1", "GenuineIntel", "Intel(R) Core(TM) i5-2400 CPU @ 3.10GHz"], "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBJ6pjbj4hVmzAyp2IUeqf2nHlSsiVXBuM2hrKM/Otbz8917F6BfJYTCm4AMv9vi4OSX2inc23t7zZQdisg1teE=", "ansible_user_gid": 1000, "ansible_system_vendor": "innotek GmbH", "ansible_swaptotal_mb": 2047, "ansible_distribution_major_version": "7", "ansible_real_group_id": 1000, "ansible_lsb": {}, "ansible_machine": "x86_64", "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQCuPMzosdZKXy8zXCKFPOgVxmN1HznO+sNfly4U3zVSGn/+Nwqvp3vuAH8cM87rBtEII903Yy2n/a9B/AoBcb/RrdrxXrCLsceRH3YpudPuUGX2CidPqM6kWysNa0xCufUuGC5Qgyv6POKKqxJInxjGejeWkyg51heb5vLIsWzusraMBW/le8iBimgOfnNzWUbkJati0M/hQZK+X4yONYrq/l24prj4RSQwk98CkI29JAbigDY58N58ab8S0b9/jcCfnPXpWFhopU99wMqxRR2itmqKo34jqQ4h2gSthqA4+ckMmT5VPBd6sunRz8N6CvZ5k0BqMDT9zMX0FGI3wp/Z", "ansible_user_gecos": "vagrant", "ansible_processor_threads_per_core": 1, "ansible_eth0": {"macaddress": "52:54:00:4d:77:d3", "features": {"tx_checksum_ipv4": "off [fixed]", "generic_receive_offload": "on", "tx_checksum_ipv6": "off [fixed]", "tx_scatter_gather_fraglist": "off [fixed]", "rx_all": "off", "highdma": "off [fixed]", "rx_fcs": "off", "tx_lockless": "off [fixed]", "tx_tcp_ecn_segmentation": "off [fixed]", "rx_udp_tunnel_port_offload": "off [fixed]", "tx_tcp6_segmentation": "off [fixed]", "tx_gso_robust": "off [fixed]", "tx_ipip_segmentation": "off [fixed]", "tx_tcp_mangleid_segmentation": "off", "tx_checksumming": "on", "vlan_challenged": "off [fixed]", "loopback": "off [fixed]", "fcoe_mtu": "off [fixed]", "scatter_gather": "on", "tx_checksum_sctp": "off [fixed]", "tx_vlan_stag_hw_insert": "off [fixed]", "rx_vlan_stag_hw_parse": "off [fixed]", "tx_gso_partial": "off [fixed]", "rx_gro_hw": "off [fixed]", "rx_vlan_stag_filter": "off [fixed]", "large_receive_offload": "off [fixed]", "tx_scatter_gather": "on", "rx_checksumming": "off", "tx_tcp_segmentation": "on", "netns_local": "off [fixed]", "busy_poll": "off [fixed]", "generic_segmentation_offload": "on", "tx_udp_tnl_segmentation": "off [fixed]", "tcp_segmentation_offload": "on", "l2_fwd_offload": "off [fixed]", "rx_vlan_offload": "on", "ntuple_filters": "off [fixed]", "tx_gre_csum_segmentation": "off [fixed]", "tx_nocache_copy": "off", "tx_udp_tnl_csum_segmentation": "off [fixed]", "udp_fragmentation_offload": "off [fixed]", "tx_sctp_segmentation": "off [fixed]", "tx_sit_segmentation": "off [fixed]", "tx_checksum_fcoe_crc": "off [fixed]", "hw_tc_offload": "off [fixed]", "tx_checksum_ip_generic": "on", "tx_fcoe_segmentation": "off [fixed]", "rx_vlan_filter": "on [fixed]", "tx_vlan_offload": "on [fixed]", "receive_hashing": "off [fixed]", "tx_gre_segmentation": "off [fixed]"}, "type": "ether", "pciid": "0000:00:03.0", "module": "e1000", "mtu": 1500, "device": "eth0", "promisc": false, "timestamping": ["tx_software", "rx_software", "software"], "ipv4": {"broadcast": "10.0.2.255", "netmask": "255.255.255.0", "address": "10.0.2.15", "prefix": "24", "network": "10.0.2.0"}, "ipv6": [{"scope": "link", "prefix": "64", "address": "fe80::5054:ff:fe4d:77d3"}], "active": true, "speed": 1000, "hw_timestamp_filters": []}, "ansible_eth1": {"macaddress": "08:00:27:01:f1:d3", "features": {"tx_checksum_ipv4": "off [fixed]", "generic_receive_offload": "on", "tx_checksum_ipv6": "off [fixed]", "tx_scatter_gather_fraglist": "off [fixed]", "rx_all": "off", "highdma": "off [fixed]", "rx_fcs": "off", "tx_lockless": "off [fixed]", "tx_tcp_ecn_segmentation": "off [fixed]", "rx_udp_tunnel_port_offload": "off [fixed]", "tx_tcp6_segmentation": "off [fixed]", "tx_gso_robust": "off [fixed]", "tx_ipip_segmentation": "off [fixed]", "tx_tcp_mangleid_segmentation": "off", "tx_checksumming": "on", "vlan_challenged": "off [fixed]", "loopback": "off [fixed]", "fcoe_mtu": "off [fixed]", "scatter_gather": "on", "tx_checksum_sctp": "off [fixed]", "tx_vlan_stag_hw_insert": "off [fixed]", "rx_vlan_stag_hw_parse": "off [fixed]", "tx_gso_partial": "off [fixed]", "rx_gro_hw": "off [fixed]", "rx_vlan_stag_filter": "off [fixed]", "large_receive_offload": "off [fixed]", "tx_scatter_gather": "on", "rx_checksumming": "off", "tx_tcp_segmentation": "on", "netns_local": "off [fixed]", "busy_poll": "off [fixed]", "generic_segmentation_offload": "on", "tx_udp_tnl_segmentation": "off [fixed]", "tcp_segmentation_offload": "on", "l2_fwd_offload": "off [fixed]", "rx_vlan_offload": "on", "ntuple_filters": "off [fixed]", "tx_gre_csum_segmentation": "off [fixed]", "tx_nocache_copy": "off", "tx_udp_tnl_csum_segmentation": "off [fixed]", "udp_fragmentation_offload": "off [fixed]", "tx_sctp_segmentation": "off [fixed]", "tx_sit_segmentation": "off [fixed]", "tx_checksum_fcoe_crc": "off [fixed]", "hw_tc_offload": "off [fixed]", "tx_checksum_ip_generic": "on", "tx_fcoe_segmentation": "off [fixed]", "rx_vlan_filter": "on [fixed]", "tx_vlan_offload": "on [fixed]", "receive_hashing": "off [fixed]", "tx_gre_segmentation": "off [fixed]"}, "type": "ether", "pciid": "0000:00:08.0", "module": "e1000", "mtu": 1500, "device": "eth1", "promisc": false, "timestamping": ["tx_software", "rx_software", "software"], "ipv4": {"broadcast": "192.168.1.255", "netmask": "255.255.255.0", "address": "192.168.1.22", "prefix": "24", "network": "192.168.1.0"}, "ipv6": [{"scope": "link", "prefix": "64", "address": "fe80::a00:27ff:fe01:f1d3"}], "active": true, "speed": 1000, "hw_timestamp_filters": []}, "ansible_system": "Linux", "ansible_processor_nproc": 2, "ansible_bios_vendor": "innotek GmbH", "ansible_all_ipv4_addresses": ["192.168.1.22", "10.0.2.15"], "ansible_python_version": "2.7.5", "ansible_virtualization_tech_guest": ["virtualbox"], "ansible_product_version": "1.2", "ansible_service_mgr": "systemd", "ansible_memory_mb": {"real": {"total": 1837, "used": 1744, "free": 93}, "swap": {"cached": 0, "total": 2047, "free": 2046, "used": 1}, "nocache": {"used": 356, "free": 1481}}, "ansible_user_dir": "/home/vagrant", "ansible_hostnqn": "", "ansible_real_user_id": 1000, "ansible_virtualization_role": "guest", "ansible_dns": {"nameservers": ["10.0.2.3"], "search": ["Dlink", "netology"]}, "ansible_effective_group_id": 1000, "ansible_lo": {"features": {"tx_checksum_ipv4": "off [fixed]", "generic_receive_offload": "on", "tx_checksum_ipv6": "off [fixed]", "tx_scatter_gather_fraglist": "on [fixed]", "rx_all": "off [fixed]", "highdma": "on [fixed]", "rx_fcs": "off [fixed]", "tx_lockless": "on [fixed]", "tx_tcp_ecn_segmentation": "on", "rx_udp_tunnel_port_offload": "off [fixed]", "tx_tcp6_segmentation": "on", "tx_gso_robust": "off [fixed]", "tx_ipip_segmentation": "off [fixed]", "tx_tcp_mangleid_segmentation": "on", "tx_checksumming": "on", "vlan_challenged": "on [fixed]", "loopback": "on [fixed]", "fcoe_mtu": "off [fixed]", "scatter_gather": "on", "tx_checksum_sctp": "on [fixed]", "tx_vlan_stag_hw_insert": "off [fixed]", "rx_vlan_stag_hw_parse": "off [fixed]", "tx_gso_partial": "off [fixed]", "rx_gro_hw": "off [fixed]", "rx_vlan_stag_filter": "off [fixed]", "large_receive_offload": "off [fixed]", "tx_scatter_gather": "on [fixed]", "rx_checksumming": "on [fixed]", "tx_tcp_segmentation": "on", "netns_local": "on [fixed]", "busy_poll": "off [fixed]", "generic_segmentation_offload": "on", "tx_udp_tnl_segmentation": "off [fixed]", "tcp_segmentation_offload": "on", "l2_fwd_offload": "off [fixed]", "rx_vlan_offload": "off [fixed]", "ntuple_filters": "off [fixed]", "tx_gre_csum_segmentation": "off [fixed]", "tx_nocache_copy": "off [fixed]", "tx_udp_tnl_csum_segmentation": "off [fixed]", "udp_fragmentation_offload": "on", "tx_sctp_segmentation": "on", "tx_sit_segmentation": "off [fixed]", "tx_checksum_fcoe_crc": "off [fixed]", "hw_tc_offload": "off [fixed]", "tx_checksum_ip_generic": "on [fixed]", "tx_fcoe_segmentation": "off [fixed]", "rx_vlan_filter": "off [fixed]", "tx_vlan_offload": "off [fixed]", "receive_hashing": "off [fixed]", "tx_gre_segmentation": "off [fixed]"}, "hw_timestamp_filters": [], "mtu": 65536, "device": "lo", "promisc": false, "timestamping": ["rx_software", "software"], "ipv4": {"broadcast": "", "netmask": "255.0.0.0", "address": "127.0.0.1", "prefix": "8", "network": "127.0.0.0"}, "ipv6": [{"scope": "host", "prefix": "128", "address": "::1"}], "active": true, "type": "loopback"}, "ansible_memtotal_mb": 1837, "ansible_device_links": {"masters": {}, "labels": {}, "ids": {"sda": ["ata-VBOX_HARDDISK_VB147a712e-bd647fec"], "sda1": ["ata-VBOX_HARDDISK_VB147a712e-bd647fec-part1"]}, "uuids": {"sda1": ["1c419d6c-5064-4a2b-953c-05b2c67edb15"]}}, "ansible_apparmor": {"status": "disabled"}, "ansible_board_vendor": "Oracle Corporation", "ansible_bios_date": "12/01/2006", "ansible_memfree_mb": 93, "ansible_board_version": "1.2", "ansible_chassis_vendor": "Oracle Corporation", "ansible_virtualization_tech_host": [], "ansible_processor_count": 1, "ansible_hostname": "centos7-03", "ansible_interfaces": ["lo", "eth1", "eth0"], "ansible_selinux": {"status": "enabled", "policyvers": 31, "type": "targeted", "mode": "enforcing", "config_mode": "enforcing"}, "ansible_fqdn": "centos7-03.netology", "ansible_mounts": [{"block_used": 1156730, "uuid": "1c419d6c-5064-4a2b-953c-05b2c67edb15", "size_total": 42927656960, "block_total": 10480385, "mount": "/", "block_available": 9323655, "size_available": 38189690880, "fstype": "xfs", "inode_total": 20971008, "options": "rw,seclabel,relatime,attr2,inode64,noquota", "device": "/dev/sda1", "inode_used": 35478, "block_size": 4096, "inode_available": 20935530}], "ansible_ssh_host_key_rsa_public_keytype": "ssh-rsa", "ansible_nodename": "centos7-03.netology", "ansible_domain": "netology", "ansible_distribution_file_path": "/etc/redhat-release", "ansible_virtualization_type": "virtualbox", "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIPxtUG0C7t6vdpGM4xoeKXRinJBd9EVhwYzR+9Y1DPdX", "ansible_processor_cores": 2, "ansible_chassis_serial": "NA", "ansible_bios_version": "VirtualBox", "ansible_date_time": {"weekday_number": "3", "iso8601_basic_short": "20220727T090238", "tz": "UTC", "weeknumber": "30", "hour": "09", "year": "2022", "epoch_int": "1658912558", "tz_offset": "+0000", "month": "07", "epoch": "1658912558", "iso8601_micro": "2022-07-27T09:02:38.553120Z", "weekday": "Wednesday", "minute": "02", "time": "09:02:38", "date": "2022-07-27", "iso8601": "2022-07-27T09:02:38Z", "tz_dst": "UTC", "day": "27", "iso8601_basic": "20220727T090238553120", "second": "38"}, "ansible_distribution_release": "Core", "ansible_os_family": "RedHat", "ansible_effective_user_id": 1000, "ansible_ssh_host_key_ecdsa_public_keytype": "ecdsa-sha2-nistp256", "ansible_product_name": "VirtualBox", "ansible_devices": {"sda": {"scheduler_mode": "noop", "rotational": "1", "vendor": "ATA", "sectors": "83886080", "links": {"masters": [], "labels": [], "ids": ["ata-VBOX_HARDDISK_VB147a712e-bd647fec"], "uuids": []}, "sas_device_handle": null, "sas_address": null, "virtual": 1, "host": "IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)", "sectorsize": "512", "removable": "0", "support_discard": "0", "model": "VBOX HARDDISK", "partitions": {"sda1": {"sectorsize": 512, "uuid": "1c419d6c-5064-4a2b-953c-05b2c67edb15", "links": {"masters": [], "labels": [], "ids": ["ata-VBOX_HARDDISK_VB147a712e-bd647fec-part1"], "uuids": ["1c419d6c-5064-4a2b-953c-05b2c67edb15"]}, "sectors": "83884032", "start": "2048", "holders": [], "size": "40.00 GB"}}, "holders": [], "size": "40.00 GB"}}, "ansible_user_uid": 1000, "ansible_proc_cmdline": {"no_timer_check": true, "LANG": "en_US.UTF-8", "BOOT_IMAGE": "/boot/vmlinuz-3.10.0-1127.el7.x86_64", "elevator": "noop", "net.ifnames": "0", "biosdevname": "0", "crashkernel": "auto", "console": ["tty0", "ttyS0,115200n8"], "ro": true, "root": "UUID=1c419d6c-5064-4a2b-953c-05b2c67edb15"}, "ansible_chassis_version": "NA", "ansible_system_capabilities": [""], "ansible_chassis_asset_tag": "NA"}}\r\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.1.22 closed.\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'rm -f -r /home/vagrant/.ansible/tmp/ansible-tmp-1658925543.4967992-23764-204800383008075/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [clickhouse-01]
+META: ran handlers
+
+TASK [Get clickhouse distrib] **************************************************
+task path: /vagrant/playbook/site.yml:12
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+<192.168.1.22> (0, b'/home/vagrant\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp `"&& mkdir "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100 `" && echo ansible-tmp-1658925545.4936202-23775-50342915796100="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100 `" ) && sleep 0'"'"''
+<192.168.1.22> (0, b'ansible-tmp-1658925545.4936202-23775-50342915796100=/home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Including module_utils file ansible/__init__.py
+Including module_utils file ansible/module_utils/__init__.py
+Including module_utils file ansible/module_utils/_text.py
+Including module_utils file ansible/module_utils/basic.py
+Including module_utils file ansible/module_utils/common/_collections_compat.py
+Including module_utils file ansible/module_utils/common/__init__.py
+Including module_utils file ansible/module_utils/common/_json_compat.py
+Including module_utils file ansible/module_utils/common/_utils.py
+Including module_utils file ansible/module_utils/common/arg_spec.py
+Including module_utils file ansible/module_utils/common/file.py
+Including module_utils file ansible/module_utils/common/locale.py
+Including module_utils file ansible/module_utils/common/parameters.py
+Including module_utils file ansible/module_utils/common/collections.py
+Including module_utils file ansible/module_utils/common/process.py
+Including module_utils file ansible/module_utils/common/sys_info.py
+Including module_utils file ansible/module_utils/common/text/converters.py
+Including module_utils file ansible/module_utils/common/text/__init__.py
+Including module_utils file ansible/module_utils/common/text/formatters.py
+Including module_utils file ansible/module_utils/common/validation.py
+Including module_utils file ansible/module_utils/common/warnings.py
+Including module_utils file ansible/module_utils/compat/selectors.py
+Including module_utils file ansible/module_utils/compat/__init__.py
+Including module_utils file ansible/module_utils/compat/_selectors2.py
+Including module_utils file ansible/module_utils/compat/selinux.py
+Including module_utils file ansible/module_utils/distro/__init__.py
+Including module_utils file ansible/module_utils/distro/_distro.py
+Including module_utils file ansible/module_utils/errors.py
+Including module_utils file ansible/module_utils/parsing/convert_bool.py
+Including module_utils file ansible/module_utils/parsing/__init__.py
+Including module_utils file ansible/module_utils/pycompat24.py
+Including module_utils file ansible/module_utils/six/__init__.py
+Including module_utils file ansible/module_utils/urls.py
+Including module_utils file ansible/module_utils/compat/typing.py
+Using module file /usr/local/lib/python3.8/dist-packages/ansible/modules/get_url.py
+<192.168.1.22> PUT /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp3sn4x1ls TO /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100/AnsiballZ_get_url.py
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set sftp_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC sftp -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' '[192.168.1.22]'
+<192.168.1.22> (0, b'sftp> put /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp3sn4x1ls /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100/AnsiballZ_get_url.py\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 3 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/vagrant size 0\r\ndebug3: Looking up /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp3sn4x1ls\r\ndebug3: Sent message fd 3 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100/AnsiballZ_get_url.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:1900\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 1900 bytes at 163840\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100/ /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' -tt 192.168.1.22 '/bin/sh -c '"'"'/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (0, b'\r\n{"group": "vagrant", "uid": 1000, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-client-22.3.3.44.noarch.rpm", "status_code": 304, "changed": false, "elapsed": 0, "dest": "./clickhouse-client-22.3.3.44.rpm", "state": "file", "gid": 1000, "secontext": "unconfined_u:object_r:user_home_t:s0", "mode": "0664", "invocation": {"module_args": {"force": false, "owner": null, "client_key": null, "group": null, "use_proxy": true, "unsafe_writes": false, "setype": null, "validate_certs": true, "serole": null, "unredirected_headers": [], "client_cert": null, "timeout": 10, "dest": "./clickhouse-client-22.3.3.44.rpm", "selevel": null, "force_basic_auth": false, "sha256sum": "", "http_agent": "ansible-httpget", "use_gssapi": false, "url_password": null, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-client-22.3.3.44.noarch.rpm", "checksum": "", "seuser": null, "headers": null, "mode": null, "url_username": null, "attributes": null, "backup": false, "tmp_dest": null}}, "owner": "vagrant", "size": 38090, "msg": "HTTP Error 304: Not Modified"}\r\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.1.22 closed.\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'rm -f -r /home/vagrant/.ansible/tmp/ansible-tmp-1658925545.4936202-23775-50342915796100/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [clickhouse-01] => (item=clickhouse-client) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "dest": "./clickhouse-client-22.3.3.44.rpm",
+    "elapsed": 0,
+    "gid": 1000,
+    "group": "vagrant",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": false,
+            "checksum": "",
+            "client_cert": null,
+            "client_key": null,
+            "dest": "./clickhouse-client-22.3.3.44.rpm",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": null,
+            "http_agent": "ansible-httpget",
+            "mode": null,
+            "owner": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "sha256sum": "",
+            "timeout": 10,
+            "tmp_dest": null,
+            "unredirected_headers": [],
+            "unsafe_writes": false,
+            "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-client-22.3.3.44.noarch.rpm",
+            "url_password": null,
+            "url_username": null,
+            "use_gssapi": false,
+            "use_proxy": true,
+            "validate_certs": true
+        }
+    },
+    "item": "clickhouse-client",
+    "mode": "0664",
+    "msg": "HTTP Error 304: Not Modified",
+    "owner": "vagrant",
+    "secontext": "unconfined_u:object_r:user_home_t:s0",
+    "size": 38090,
+    "state": "file",
+    "status_code": 304,
+    "uid": 1000,
+    "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-client-22.3.3.44.noarch.rpm"
+}
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+<192.168.1.22> (0, b'/home/vagrant\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp `"&& mkdir "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270 `" && echo ansible-tmp-1658925546.845469-23775-101977027202270="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270 `" ) && sleep 0'"'"''
+<192.168.1.22> (0, b'ansible-tmp-1658925546.845469-23775-101977027202270=/home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/local/lib/python3.8/dist-packages/ansible/modules/get_url.py
+<192.168.1.22> PUT /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpymowshg5 TO /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270/AnsiballZ_get_url.py
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set sftp_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC sftp -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' '[192.168.1.22]'
+<192.168.1.22> (0, b'sftp> put /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpymowshg5 /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270/AnsiballZ_get_url.py\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 3 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/vagrant size 0\r\ndebug3: Looking up /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpymowshg5\r\ndebug3: Sent message fd 3 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270/AnsiballZ_get_url.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:1900\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 1900 bytes at 163840\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270/ /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' -tt 192.168.1.22 '/bin/sh -c '"'"'/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (0, b'\r\n{"group": "vagrant", "uid": 1000, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-server-22.3.3.44.noarch.rpm", "status_code": 304, "changed": false, "elapsed": 0, "dest": "./clickhouse-server-22.3.3.44.rpm", "state": "file", "gid": 1000, "secontext": "unconfined_u:object_r:user_home_t:s0", "mode": "0664", "invocation": {"module_args": {"force": false, "owner": null, "client_key": null, "group": null, "use_proxy": true, "unsafe_writes": false, "setype": null, "validate_certs": true, "serole": null, "unredirected_headers": [], "client_cert": null, "timeout": 10, "dest": "./clickhouse-server-22.3.3.44.rpm", "selevel": null, "force_basic_auth": false, "sha256sum": "", "http_agent": "ansible-httpget", "use_gssapi": false, "url_password": null, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-server-22.3.3.44.noarch.rpm", "checksum": "", "seuser": null, "headers": null, "mode": null, "url_username": null, "attributes": null, "backup": false, "tmp_dest": null}}, "owner": "vagrant", "size": 61151, "msg": "HTTP Error 304: Not Modified"}\r\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.1.22 closed.\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'rm -f -r /home/vagrant/.ansible/tmp/ansible-tmp-1658925546.845469-23775-101977027202270/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [clickhouse-01] => (item=clickhouse-server) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "dest": "./clickhouse-server-22.3.3.44.rpm",
+    "elapsed": 0,
+    "gid": 1000,
+    "group": "vagrant",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": false,
+            "checksum": "",
+            "client_cert": null,
+            "client_key": null,
+            "dest": "./clickhouse-server-22.3.3.44.rpm",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": null,
+            "http_agent": "ansible-httpget",
+            "mode": null,
+            "owner": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "sha256sum": "",
+            "timeout": 10,
+            "tmp_dest": null,
+            "unredirected_headers": [],
+            "unsafe_writes": false,
+            "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-server-22.3.3.44.noarch.rpm",
+            "url_password": null,
+            "url_username": null,
+            "use_gssapi": false,
+            "use_proxy": true,
+            "validate_certs": true
+        }
+    },
+    "item": "clickhouse-server",
+    "mode": "0664",
+    "msg": "HTTP Error 304: Not Modified",
+    "owner": "vagrant",
+    "secontext": "unconfined_u:object_r:user_home_t:s0",
+    "size": 61151,
+    "state": "file",
+    "status_code": 304,
+    "uid": 1000,
+    "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-server-22.3.3.44.noarch.rpm"
+}
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+<192.168.1.22> (0, b'/home/vagrant\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp `"&& mkdir "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183 `" && echo ansible-tmp-1658925547.8144243-23775-49163101469183="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183 `" ) && sleep 0'"'"''
+<192.168.1.22> (0, b'ansible-tmp-1658925547.8144243-23775-49163101469183=/home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/local/lib/python3.8/dist-packages/ansible/modules/get_url.py
+<192.168.1.22> PUT /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpi7d4ysrm TO /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183/AnsiballZ_get_url.py
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set sftp_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC sftp -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' '[192.168.1.22]'
+<192.168.1.22> (0, b'sftp> put /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpi7d4ysrm /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183/AnsiballZ_get_url.py\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 3 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/vagrant size 0\r\ndebug3: Looking up /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpi7d4ysrm\r\ndebug3: Sent message fd 3 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183/AnsiballZ_get_url.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:1914\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 1914 bytes at 163840\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183/ /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' -tt 192.168.1.22 '/bin/sh -c '"'"'/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (1, b'\r\n{"group": "vagrant", "uid": 1000, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm", "status_code": 404, "elapsed": 0, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "failed": true, "state": "file", "gid": 1000, "secontext": "unconfined_u:object_r:user_home_t:s0", "mode": "0664", "invocation": {"module_args": {"force": false, "owner": null, "client_key": null, "group": null, "use_proxy": true, "unsafe_writes": false, "setype": null, "validate_certs": true, "serole": null, "unredirected_headers": [], "client_cert": null, "timeout": 10, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "selevel": null, "force_basic_auth": false, "sha256sum": "", "http_agent": "ansible-httpget", "use_gssapi": false, "url_password": null, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm", "checksum": "", "seuser": null, "headers": null, "mode": null, "url_username": null, "attributes": null, "backup": false, "tmp_dest": null}}, "owner": "vagrant", "size": 246310036, "response": "HTTP Error 404: Not Found", "msg": "Request failed"}\r\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 1\r\nShared connection to 192.168.1.22 closed.\r\n')
+<192.168.1.22> Failed to connect to the host via ssh: OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files
+debug1: /etc/ssh/ssh_config line 21: Applying options for *
+debug2: resolve_canonicalize: hostname 192.168.1.22 is address
+debug1: auto-mux: Trying existing master
+debug2: fd 3 setting O_NONBLOCK
+debug2: mux_client_hello_exchange: master version 4
+debug3: mux_client_forwards: request forwardings: 0 local, 0 remote
+debug3: mux_client_request_session: entering
+debug3: mux_client_request_alive: entering
+debug3: mux_client_request_alive: done pid = 23697
+debug3: mux_client_request_session: session request sent
+debug3: mux_client_read_packet: read header failed: Broken pipe
+debug2: Received exit status from master 1
+Shared connection to 192.168.1.22 closed.
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'rm -f -r /home/vagrant/.ansible/tmp/ansible-tmp-1658925547.8144243-23775-49163101469183/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+failed: [clickhouse-01] (item=clickhouse-common-static) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "dest": "./clickhouse-common-static-22.3.3.44.rpm",
+    "elapsed": 0,
+    "gid": 1000,
+    "group": "vagrant",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": false,
+            "checksum": "",
+            "client_cert": null,
+            "client_key": null,
+            "dest": "./clickhouse-common-static-22.3.3.44.rpm",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": null,
+            "http_agent": "ansible-httpget",
+            "mode": null,
+            "owner": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "sha256sum": "",
+            "timeout": 10,
+            "tmp_dest": null,
+            "unredirected_headers": [],
+            "unsafe_writes": false,
+            "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm",
+            "url_password": null,
+            "url_username": null,
+            "use_gssapi": false,
+            "use_proxy": true,
+            "validate_certs": true
+        }
+    },
+    "item": "clickhouse-common-static",
+    "mode": "0664",
+    "msg": "Request failed",
+    "owner": "vagrant",
+    "response": "HTTP Error 404: Not Found",
+    "secontext": "unconfined_u:object_r:user_home_t:s0",
+    "size": 246310036,
+    "state": "file",
+    "status_code": 404,
+    "uid": 1000,
+    "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.noarch.rpm"
+}
+
+TASK [Get clickhouse distrib] **************************************************
+task path: /vagrant/playbook/site.yml:18
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+<192.168.1.22> (0, b'/home/vagrant\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp `"&& mkdir "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997 `" && echo ansible-tmp-1658925549.0126264-23798-5854700463997="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997 `" ) && sleep 0'"'"''
+<192.168.1.22> (0, b'ansible-tmp-1658925549.0126264-23798-5854700463997=/home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Using module file /usr/local/lib/python3.8/dist-packages/ansible/modules/get_url.py
+<192.168.1.22> PUT /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp8e_4a4_1 TO /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997/AnsiballZ_get_url.py
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set sftp_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC sftp -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' '[192.168.1.22]'
+<192.168.1.22> (0, b'sftp> put /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp8e_4a4_1 /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997/AnsiballZ_get_url.py\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 3 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/vagrant size 0\r\ndebug3: Looking up /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp8e_4a4_1\r\ndebug3: Sent message fd 3 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997/AnsiballZ_get_url.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:1913\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 1913 bytes at 163840\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997/ /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' -tt 192.168.1.22 '/bin/sh -c '"'"'/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997/AnsiballZ_get_url.py && sleep 0'"'"''
+<192.168.1.22> (0, b'\r\n{"group": "vagrant", "uid": 1000, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm", "status_code": 304, "changed": false, "elapsed": 0, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "state": "file", "gid": 1000, "secontext": "unconfined_u:object_r:user_home_t:s0", "mode": "0664", "invocation": {"module_args": {"force": false, "owner": null, "client_key": null, "group": null, "use_proxy": true, "unsafe_writes": false, "setype": null, "validate_certs": true, "serole": null, "unredirected_headers": [], "client_cert": null, "timeout": 10, "dest": "./clickhouse-common-static-22.3.3.44.rpm", "selevel": null, "force_basic_auth": false, "sha256sum": "", "http_agent": "ansible-httpget", "use_gssapi": false, "url_password": null, "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm", "checksum": "", "seuser": null, "headers": null, "mode": null, "url_username": null, "attributes": null, "backup": false, "tmp_dest": null}}, "owner": "vagrant", "size": 246310036, "msg": "HTTP Error 304: Not Modified"}\r\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.1.22 closed.\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'rm -f -r /home/vagrant/.ansible/tmp/ansible-tmp-1658925549.0126264-23798-5854700463997/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [clickhouse-01] => {
+    "changed": false,
+    "dest": "./clickhouse-common-static-22.3.3.44.rpm",
+    "elapsed": 0,
+    "gid": 1000,
+    "group": "vagrant",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": false,
+            "checksum": "",
+            "client_cert": null,
+            "client_key": null,
+            "dest": "./clickhouse-common-static-22.3.3.44.rpm",
+            "force": false,
+            "force_basic_auth": false,
+            "group": null,
+            "headers": null,
+            "http_agent": "ansible-httpget",
+            "mode": null,
+            "owner": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "sha256sum": "",
+            "timeout": 10,
+            "tmp_dest": null,
+            "unredirected_headers": [],
+            "unsafe_writes": false,
+            "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm",
+            "url_password": null,
+            "url_username": null,
+            "use_gssapi": false,
+            "use_proxy": true,
+            "validate_certs": true
+        }
+    },
+    "mode": "0664",
+    "msg": "HTTP Error 304: Not Modified",
+    "owner": "vagrant",
+    "secontext": "unconfined_u:object_r:user_home_t:s0",
+    "size": 246310036,
+    "state": "file",
+    "status_code": 304,
+    "uid": 1000,
+    "url": "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-22.3.3.44.x86_64.rpm"
+}
+
+TASK [Install clickhouse packages] *********************************************
+task path: /vagrant/playbook/site.yml:22
+Running ansible.legacy.yum as the backend for the yum action plugin
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+<192.168.1.22> (0, b'/home/vagrant\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp `"&& mkdir "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324 `" && echo ansible-tmp-1658925550.062606-23807-2864181043324="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324 `" ) && sleep 0'"'"''
+<192.168.1.22> (0, b'ansible-tmp-1658925550.062606-23807-2864181043324=/home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Including module_utils file ansible/__init__.py
+Including module_utils file ansible/module_utils/__init__.py
+Including module_utils file ansible/module_utils/_text.py
+Including module_utils file ansible/module_utils/basic.py
+Including module_utils file ansible/module_utils/common/_collections_compat.py
+Including module_utils file ansible/module_utils/common/__init__.py
+Including module_utils file ansible/module_utils/common/_json_compat.py
+Including module_utils file ansible/module_utils/common/_utils.py
+Including module_utils file ansible/module_utils/common/arg_spec.py
+Including module_utils file ansible/module_utils/common/file.py
+Including module_utils file ansible/module_utils/common/locale.py
+Including module_utils file ansible/module_utils/common/parameters.py
+Including module_utils file ansible/module_utils/common/collections.py
+Including module_utils file ansible/module_utils/common/process.py
+Including module_utils file ansible/module_utils/common/respawn.py
+Including module_utils file ansible/module_utils/common/sys_info.py
+Including module_utils file ansible/module_utils/common/text/converters.py
+Including module_utils file ansible/module_utils/common/text/__init__.py
+Including module_utils file ansible/module_utils/common/text/formatters.py
+Including module_utils file ansible/module_utils/common/validation.py
+Including module_utils file ansible/module_utils/common/warnings.py
+Including module_utils file ansible/module_utils/compat/selectors.py
+Including module_utils file ansible/module_utils/compat/__init__.py
+Including module_utils file ansible/module_utils/compat/_selectors2.py
+Including module_utils file ansible/module_utils/compat/selinux.py
+Including module_utils file ansible/module_utils/distro/__init__.py
+Including module_utils file ansible/module_utils/distro/_distro.py
+Including module_utils file ansible/module_utils/errors.py
+Including module_utils file ansible/module_utils/parsing/convert_bool.py
+Including module_utils file ansible/module_utils/parsing/__init__.py
+Including module_utils file ansible/module_utils/pycompat24.py
+Including module_utils file ansible/module_utils/six/__init__.py
+Including module_utils file ansible/module_utils/urls.py
+Including module_utils file ansible/module_utils/compat/typing.py
+Including module_utils file ansible/module_utils/yumdnf.py
+Using module file /usr/local/lib/python3.8/dist-packages/ansible/modules/yum.py
+<192.168.1.22> PUT /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpljpqr8y3 TO /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324/AnsiballZ_yum.py
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set sftp_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC sftp -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' '[192.168.1.22]'
+<192.168.1.22> (0, b'sftp> put /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpljpqr8y3 /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324/AnsiballZ_yum.py\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 3 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/vagrant size 0\r\ndebug3: Looking up /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmpljpqr8y3\r\ndebug3: Sent message fd 3 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324/AnsiballZ_yum.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:9 O:163840 S:20993\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 32768 bytes at 131072\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 9 20993 bytes at 163840\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324/ /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324/AnsiballZ_yum.py && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' -tt 192.168.1.22 '/bin/sh -c '"'"'sudo -H -S -n  -u root /bin/sh -c '"'"'"'"'"'"'"'"'echo BECOME-SUCCESS-brzxwurskupapubthycblonselyrlrij ; /usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324/AnsiballZ_yum.py'"'"'"'"'"'"'"'"' && sleep 0'"'"''
+Escalation succeeded
+<192.168.1.22> (0, b'\r\n{"msg": "", "invocation": {"module_args": {"lock_timeout": 30, "update_cache": false, "conf_file": null, "exclude": [], "allow_downgrade": false, "sslverify": true, "disable_gpg_check": false, "disable_excludes": null, "use_backend": "auto", "state": null, "disablerepo": [], "skip_broken": false, "releasever": null, "cacheonly": false, "autoremove": false, "download_dir": null, "enable_plugin": [], "installroot": "/", "install_weak_deps": true, "name": ["clickhouse-common-static-22.3.3.44.rpm", "clickhouse-client-22.3.3.44.rpm", "clickhouse-server-22.3.3.44.rpm"], "download_only": false, "bugfix": false, "list": null, "install_repoquery": true, "update_only": false, "disable_plugin": [], "enablerepo": [], "security": false, "validate_certs": true}}, "changed": false, "results": ["clickhouse-common-static-22.3.3.44-1.x86_64 providing clickhouse-common-static-22.3.3.44.rpm is already installed", "clickhouse-client-22.3.3.44-1.noarch providing clickhouse-client-22.3.3.44.rpm is already installed", "clickhouse-server-22.3.3.44-1.noarch providing clickhouse-server-22.3.3.44.rpm is already installed"], "rc": 0}\r\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\nShared connection to 192.168.1.22 closed.\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'rm -f -r /home/vagrant/.ansible/tmp/ansible-tmp-1658925550.062606-23807-2864181043324/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [clickhouse-01] => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "allow_downgrade": false,
+            "autoremove": false,
+            "bugfix": false,
+            "cacheonly": false,
+            "conf_file": null,
+            "disable_excludes": null,
+            "disable_gpg_check": false,
+            "disable_plugin": [],
+            "disablerepo": [],
+            "download_dir": null,
+            "download_only": false,
+            "enable_plugin": [],
+            "enablerepo": [],
+            "exclude": [],
+            "install_repoquery": true,
+            "install_weak_deps": true,
+            "installroot": "/",
+            "list": null,
+            "lock_timeout": 30,
+            "name": [
+                "clickhouse-common-static-22.3.3.44.rpm",
+                "clickhouse-client-22.3.3.44.rpm",
+                "clickhouse-server-22.3.3.44.rpm"
+            ],
+            "releasever": null,
+            "security": false,
+            "skip_broken": false,
+            "sslverify": true,
+            "state": null,
+            "update_cache": false,
+            "update_only": false,
+            "use_backend": "auto",
+            "validate_certs": true
+        }
+    },
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "clickhouse-common-static-22.3.3.44-1.x86_64 providing clickhouse-common-static-22.3.3.44.rpm is already installed",
+        "clickhouse-client-22.3.3.44-1.noarch providing clickhouse-client-22.3.3.44.rpm is already installed",
+        "clickhouse-server-22.3.3.44-1.noarch providing clickhouse-server-22.3.3.44.rpm is already installed"
+    ]
+}
+
+TASK [Flush handlers] **********************************************************
+task path: /vagrant/playbook/site.yml:30
+META: ran handlers
+
+TASK [Create database] *********************************************************
+task path: /vagrant/playbook/site.yml:32
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'echo ~ && sleep 0'"'"''
+<192.168.1.22> (0, b'/home/vagrant\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'( umask 77 && mkdir -p "` echo /home/vagrant/.ansible/tmp `"&& mkdir "` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599 `" && echo ansible-tmp-1658925551.7517931-23816-55151966652599="` echo /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599 `" ) && sleep 0'"'"''
+<192.168.1.22> (0, b'ansible-tmp-1658925551.7517931-23816-55151966652599=/home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+Including module_utils file ansible/__init__.py
+Including module_utils file ansible/module_utils/__init__.py
+Including module_utils file ansible/module_utils/_text.py
+Including module_utils file ansible/module_utils/basic.py
+Including module_utils file ansible/module_utils/common/_collections_compat.py
+Including module_utils file ansible/module_utils/common/__init__.py
+Including module_utils file ansible/module_utils/common/_json_compat.py
+Including module_utils file ansible/module_utils/common/_utils.py
+Including module_utils file ansible/module_utils/common/arg_spec.py
+Including module_utils file ansible/module_utils/common/collections.py
+Including module_utils file ansible/module_utils/common/file.py
+Including module_utils file ansible/module_utils/common/locale.py
+Including module_utils file ansible/module_utils/common/parameters.py
+Including module_utils file ansible/module_utils/common/process.py
+Including module_utils file ansible/module_utils/common/sys_info.py
+Including module_utils file ansible/module_utils/common/text/converters.py
+Including module_utils file ansible/module_utils/common/text/__init__.py
+Including module_utils file ansible/module_utils/common/text/formatters.py
+Including module_utils file ansible/module_utils/common/validation.py
+Including module_utils file ansible/module_utils/common/warnings.py
+Including module_utils file ansible/module_utils/compat/selectors.py
+Including module_utils file ansible/module_utils/compat/__init__.py
+Including module_utils file ansible/module_utils/compat/_selectors2.py
+Including module_utils file ansible/module_utils/compat/selinux.py
+Including module_utils file ansible/module_utils/distro/__init__.py
+Including module_utils file ansible/module_utils/distro/_distro.py
+Including module_utils file ansible/module_utils/errors.py
+Including module_utils file ansible/module_utils/parsing/convert_bool.py
+Including module_utils file ansible/module_utils/parsing/__init__.py
+Including module_utils file ansible/module_utils/pycompat24.py
+Including module_utils file ansible/module_utils/six/__init__.py
+Using module file /usr/local/lib/python3.8/dist-packages/ansible/modules/command.py
+<192.168.1.22> PUT /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp3vw8x3z1 TO /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599/AnsiballZ_command.py
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set sftp_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC sftp -b - -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' '[192.168.1.22]'
+<192.168.1.22> (0, b'sftp> put /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp3vw8x3z1 /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599/AnsiballZ_command.py\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug2: Remote version: 3\r\ndebug2: Server supports extension "posix-rename@openssh.com" revision 1\r\ndebug2: Server supports extension "statvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "fstatvfs@openssh.com" revision 2\r\ndebug2: Server supports extension "hardlink@openssh.com" revision 1\r\ndebug2: Server supports extension "fsync@openssh.com" revision 1\r\ndebug3: Sent message fd 3 T:16 I:1\r\ndebug3: SSH_FXP_REALPATH . -> /home/vagrant size 0\r\ndebug3: Looking up /home/vagrant/.ansible/tmp/ansible-local-237586bwvy4u_/tmp3vw8x3z1\r\ndebug3: Sent message fd 3 T:17 I:2\r\ndebug3: Received stat reply T:101 I:2\r\ndebug1: Couldn\'t stat remote file: No such file or directory\r\ndebug3: Sent message SSH2_FXP_OPEN I:3 P:/home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599/AnsiballZ_command.py\r\ndebug3: Sent message SSH2_FXP_WRITE I:4 O:0 S:32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 4 32768 bytes at 0\r\ndebug3: Sent message SSH2_FXP_WRITE I:5 O:32768 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:6 O:65536 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:7 O:98304 S:32768\r\ndebug3: Sent message SSH2_FXP_WRITE I:8 O:131072 S:1382\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 5 32768 bytes at 32768\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 6 32768 bytes at 65536\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 7 32768 bytes at 98304\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: In write loop, ack for 8 1382 bytes at 131072\r\ndebug3: Sent message SSH2_FXP_CLOSE I:4\r\ndebug3: SSH2_FXP_STATUS 0\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'chmod u+x /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599/ /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599/AnsiballZ_command.py && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' -tt 192.168.1.22 '/bin/sh -c '"'"'/usr/bin/python /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599/AnsiballZ_command.py && sleep 0'"'"''
+<192.168.1.22> (1, b'\r\n{"changed": true, "end": "2022-07-27 09:02:46.551870", "stdout": "", "cmd": ["clickhouse-client", "-q", "create database logs;"], "failed": true, "delta": "0:00:00.106531", "stderr": "Received exception from server (version 22.3.3):\\nCode: 82. DB::Exception: Received from localhost:9000. DB::Exception: Database logs already exists.. (DATABASE_ALREADY_EXISTS)\\n(query: create database logs;)", "rc": 82, "invocation": {"module_args": {"creates": null, "executable": null, "_uses_shell": false, "strip_empty_ends": true, "_raw_params": "clickhouse-client -q \'create database logs;\'", "removes": null, "argv": null, "warn": false, "chdir": null, "stdin_add_newline": true, "stdin": null}}, "start": "2022-07-27 09:02:46.445339", "msg": "non-zero return code"}\r\n', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 1\r\nShared connection to 192.168.1.22 closed.\r\n')
+<192.168.1.22> Failed to connect to the host via ssh: OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files
+debug1: /etc/ssh/ssh_config line 21: Applying options for *
+debug2: resolve_canonicalize: hostname 192.168.1.22 is address
+debug1: auto-mux: Trying existing master
+debug2: fd 3 setting O_NONBLOCK
+debug2: mux_client_hello_exchange: master version 4
+debug3: mux_client_forwards: request forwardings: 0 local, 0 remote
+debug3: mux_client_request_session: entering
+debug3: mux_client_request_alive: entering
+debug3: mux_client_request_alive: done pid = 23697
+debug3: mux_client_request_session: session request sent
+debug3: mux_client_read_packet: read header failed: Broken pipe
+debug2: Received exit status from master 1
+Shared connection to 192.168.1.22 closed.
+<192.168.1.22> ESTABLISH SSH CONNECTION FOR USER: None
+<192.168.1.22> SSH: ansible.cfg set ssh_args: (-C)(-o)(ControlMaster=auto)(-o)(ControlPersist=60s)
+<192.168.1.22> SSH: ansible_password/ansible_ssh_password not set: (-o)(KbdInteractiveAuthentication=no)(-o)(PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey)(-o)(PasswordAuthentication=no)
+<192.168.1.22> SSH: ANSIBLE_TIMEOUT/timeout set: (-o)(ConnectTimeout=10)
+<192.168.1.22> SSH: Set ssh_common_args: ()
+<192.168.1.22> SSH: Set ssh_extra_args: ()
+<192.168.1.22> SSH: found only ControlPersist; added ControlPath: (-o)(ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e")
+<192.168.1.22> SSH: EXEC ssh -vvv -C -o ControlMaster=auto -o ControlPersist=60s -o KbdInteractiveAuthentication=no -o PreferredAuthentications=gssapi-with-mic,gssapi-keyex,hostbased,publickey -o PasswordAuthentication=no -o ConnectTimeout=10 -o 'ControlPath="/home/vagrant/.ansible/cp/e4d37a6c6e"' 192.168.1.22 '/bin/sh -c '"'"'rm -f -r /home/vagrant/.ansible/tmp/ansible-tmp-1658925551.7517931-23816-55151966652599/ > /dev/null 2>&1 && sleep 0'"'"''
+<192.168.1.22> (0, b'', b'OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files\r\ndebug1: /etc/ssh/ssh_config line 21: Applying options for *\r\ndebug2: resolve_canonicalize: hostname 192.168.1.22 is address\r\ndebug1: auto-mux: Trying existing master\r\ndebug2: fd 3 setting O_NONBLOCK\r\ndebug2: mux_client_hello_exchange: master version 4\r\ndebug3: mux_client_forwards: request forwardings: 0 local, 0 remote\r\ndebug3: mux_client_request_session: entering\r\ndebug3: mux_client_request_alive: entering\r\ndebug3: mux_client_request_alive: done pid = 23697\r\ndebug3: mux_client_request_session: session request sent\r\ndebug3: mux_client_read_packet: read header failed: Broken pipe\r\ndebug2: Received exit status from master 0\r\n')
+ok: [clickhouse-01] => {
+    "changed": false,
+    "cmd": [
+        "clickhouse-client",
+        "-q",
+        "create database logs;"
+    ],
+    "delta": "0:00:00.106531",
+    "end": "2022-07-27 09:02:46.551870",
+    "failed_when_result": false,
+    "invocation": {
+        "module_args": {
+            "_raw_params": "clickhouse-client -q 'create database logs;'",
+            "_uses_shell": false,
+            "argv": null,
+            "chdir": null,
+            "creates": null,
+            "executable": null,
+            "removes": null,
+            "stdin": null,
+            "stdin_add_newline": true,
+            "strip_empty_ends": true,
+            "warn": false
+        }
+    },
+    "msg": "non-zero return code",
+    "rc": 82,
+    "start": "2022-07-27 09:02:46.445339",
+    "stderr": "Received exception from server (version 22.3.3):\nCode: 82. DB::Exception: Received from localhost:9000. DB::Exception: Database logs already exists.. (DATABASE_ALREADY_EXISTS)\n(query: create database logs;)",
+    "stderr_lines": [
+        "Received exception from server (version 22.3.3):",
+        "Code: 82. DB::Exception: Received from localhost:9000. DB::Exception: Database logs already exists.. (DATABASE_ALREADY_EXISTS)",
+        "(query: create database logs;)"
+    ],
+    "stdout": "",
+    "stdout_lines": []
+}
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP *********************************************************************
+clickhouse-01              : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+
