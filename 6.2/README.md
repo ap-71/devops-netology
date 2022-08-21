@@ -192,6 +192,7 @@ SELECT COUNT (*) FROM orders;
 |Петров Петр Петрович| Монитор |
 |Иоганн Себастьян Бах| Гитара |
 
+
 Приведите SQL-запросы для выполнения данных операций.
 > UPDATE clients SET order_id = 3 WHERE id = 1;
 > UPDATE clients SET order_id = 4 WHERE id = 2;

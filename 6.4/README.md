@@ -3,7 +3,7 @@
 ## Задача 1
 
 Используя docker поднимите инстанс PostgreSQL (версию 13). Данные БД сохраните в volume.
-![img.png](img.png)
+![image.png](image.png)
 Подключитесь к БД PostgreSQL используя `psql`.
 ``` 
  sudo docker exec -it src_db_1 psql -U postgres
@@ -21,6 +21,7 @@
 >\dS+ table_name
 - выхода из psql
 >\q
+
 ## Задача 2
 
 Используя `psql` создайте БД `test_database`.
@@ -34,7 +35,7 @@
 > cd /pg_dump/
 >psql -U postgres -d test_database < test_dump.sql
 
-![img_1.png](img_1.png)
+![image_1.png](image_1.png)
 
 Перейдите в управляющую консоль `psql` внутри контейнера.
 > sudo docker exec -it src_db_1 psql -U postgres
@@ -43,7 +44,7 @@
 >\c test_database
 > analyze VERBOSE orders;
 
-![img_2.png](img_2.png)
+![image_2.png](image_2.png)
 
 Используя таблицу [pg_stats](https://postgrespro.ru/docs/postgresql/12/view-pg-stats), найдите столбец таблицы `orders` 
 с наибольшим средним значением размера элементов в байтах.
@@ -51,7 +52,7 @@
 **Приведите в ответе** команду, которую вы использовали для вычисления и полученный результат.
 >select avg_width from pg_stats where tablename='orders';
 
-![img_3.png](img_3.png)
+![image_3.png](image_3.png)
 
 ## Задача 3
 
