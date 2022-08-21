@@ -1,9 +1,0 @@
----
-- name: Assert clickhouse role
-  hosts: clickhouse
-  roles:
-    - clickhouse
-- name: Assert lighthouse role
-  hosts: lighthouse
-  roles:
-    - lighthouse
