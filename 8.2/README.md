@@ -44,5 +44,3 @@
 
 Передать несколько переменных
 >ansible-playbook site.yml -i inventory/prod.yml -e '{"custom_var":"3234234","var2":"dfdf"}' 
-
-
