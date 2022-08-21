@@ -34,7 +34,7 @@
 11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
 [lighthouse-role](./lighthouse-role-main)
 [vector-role](./vector-role-main)
-[playbook](https://github.com/panarin0290/devops-netology/tree/main/8.3)
+[playbook](https://github.com/panarin0290/devops-netology/tree/main/8.3-role)
 ---
 
 ### Как оформить ДЗ?
