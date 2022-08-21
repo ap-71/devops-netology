@@ -30,4 +30,4 @@ BSD
 Author Information
 ------------------
 
-Netology Students
+Aleksandr Panarin
