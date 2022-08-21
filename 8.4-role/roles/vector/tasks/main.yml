@@ -1,0 +1,22 @@
+---
+# tasks file for vector-role
+- name: Install Vector
+    handlers:
+    - name: Start Vector service
+      become: true
+      ansible.builtin.service:
+        name: Install Vector
+        state: restarted
+- name: Get vector distrib
+   ansible.builtin.get_url:
+   url: "https://packages.timber.io/vector/0.20.0/vector-0.20.0-1.x86_64.rpm"
+   dest: "./vector-0.20.0-1.x86_64.rpm"
+ # check_mode: true # включаем проверку таски
+- name: Install vector packages
+ become: true
+ ansible.builtin.yum:
+   name:
+     # - vector-0.23.0-1.x86_64.rpm
+      - vector-0.20.0-1.x86_64.rpm
+    state: present
+ notify: Start Vector service
