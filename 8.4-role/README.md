@@ -32,8 +32,8 @@
 9. Переработайте playbook на использование roles. Не забудьте про зависимости lighthouse и возможности совмещения `roles` с `tasks`.
 10. Выложите playbook в репозиторий.
 11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
-[lighthouse-role](./lighthouse-role-main)
-[vector-role](./vector-role-main)
+[lighthouse-role](https://github.com/panarin0290/lighthouse-role/tree/main/)
+[vector-role](https://github.com/panarin0290/vector-role/tree/main/)
 [playbook](https://github.com/panarin0290/devops-netology/tree/main/8.3-role)
 ---
 
