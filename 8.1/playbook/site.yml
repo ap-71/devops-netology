@@ -1,0 +1,36 @@
+---
+  - name: Print os facts
+    hosts: all
+    # hosts: centos7
+    tasks:
+    - block:
+      - name: Redefined vars
+        ansible.builtin.set_fact:
+          custom_var: random
+        when: ansible_host == "centos7"
+      - name: Print OS
+        ignore_errors: True
+        debug:
+          msg: "{{ ansible_distribution }}"
+      - name: Second tasks
+          #failed_when: false
+        #changed_when: false
+        #ansible.builtin.command: echo 1
+        #changed_when: result.stdout == "1"
+        #ignore_errors: True
+        debug:
+          # msg: "I`m stll working"
+          var: custom_var
+          # var: deb_var
+        register: result
+      - name: Print fact
+        debug:
+          # msg: "some_fact"  вывод текста
+          # msg: "{{ some_fact }}" вывод переменной
+          # msg: "{{ some_fact }}"
+          msg: "fact like  {{ some_fact }} is success"
+          #var: result
+      rescue:
+        - name: Rescue this
+          debug:
+            msg: I Save this play
