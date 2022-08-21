@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: "netology-db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - /docker-entrypoint-initdb.d:/mnt/pg_buckup/docker-entrypoint-initdb.d
+      - /var/lib/postgresql/data:/mnt/pg_buckup/var/lib/postgresql/data
+      - /mnt/pg_dump:/pg_dump
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DESIGN: nette
+    ports:
+      - 8080:8080
+
+

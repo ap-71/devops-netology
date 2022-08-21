@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "p@ssw0rd"
+    volumes:
+      - /mnt/mysql-external-backup:/mysql-external-backup
+      - /mnt/mysql-backup:/mysql-backup
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DESIGN: nette
+    ports:
+      - 8080:8080
+
+

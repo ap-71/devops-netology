@@ -1,0 +1,44 @@
+
+
+
+services:
+  postgres:
+    image: 29ce379c6603
+    environment:
+      POSTGRES_DB: "test_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+
+    ports:
+      - "5432:5432"
+volumes:
+      #- ../sql-init-scripts:/docker-entrypoint-initdb.d
+      #- ../docker-entrypoint-initdb.d:/mnt/pg_buckup/docker-entrypoint-initdb.d
+      - /var/lib/postgresql/data:/mnt/pg_buckup/var/lib/postgresql/data
+      - /mnt/pg_dump:/pg_dump
+#services:
+#  postgres:
+#    image: 29ce379c6603
+#    environment:
+#      POSTGRES_DB: "test_db"
+#      POSTGRES_USER: "postgres"
+#      POSTGRES_PASSWORD: "postgres"
+#      PGDATA: "/var/lib/postgresql/data/pgdata"
+
+      #- .:/var/lib/postgresql/data
+      #- .:/var/lib/postgresql/
+#      ports:
+#     - "5432:5432"
+#     volumes:
+#      - pgdata:/var/lib/postgresql/data
+#      - pgconf:/etc/postgresql
+#      - pglog:/var/log/postgresql
+#
+#volumes:
+#  pgdata:
+#    driver: local
+#  pgconf:
+#    driver: local
+#  pglog:
+#    driver: local
